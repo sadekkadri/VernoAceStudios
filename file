@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VernoAceStudios - User System</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: 200px;
+            background-color: #002D72;
+            position: fixed;
+            height: 100%;
+            padding-top: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 20px 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            background-color: #0072E4;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .hero {
+            text-align: center;
+            background-image: linear-gradient(to right, #0056A1, #009EDB);
+            color: white;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: bold; /* Make the heading bold */
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            line-height: 1.6; /* Improve spacing between lines */
+        }
+
+        .cta-button {
+            background-color: #002D72;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #0072E4;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 20px;
+            margin-bottom: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #002D72;
+        }
+
+        /* Login/Signup Section */
+        .auth-section {
+            text-align: right;
+            padding: 20px;
+        }
+
+        .auth-buttons {
+            margin-bottom: 20px;
+        }
+
+        .auth-buttons button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            background-color: #002D72;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .auth-buttons button:hover {
+            background-color: #0072E4;
+        }
+
+        .username-display {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 18px;
+            background-color: #f4f7f9;
+            padding: 10px;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        /* Sign-up Form */
+        .signup-form, .login-form {
+            display: none;
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .signup-form.active, .login-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#our-vision">Our Vision</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <!-- User Authentication Section -->
+        <div class="auth-section">
+            <div class="auth-buttons">
+                <button id="signupButton">Sign Up</button>
+                <button id="loginButton">Login</button>
+            </div>
+            <div class="username-display" id="userDisplay">Guest123456</div>
+        </div>
+
+        <!-- Home Section -->
+        <div id="home" class="section">
+            <h2>Welcome to <strong>VernoAceStudios</strong></h2> <!-- Made the studio name bold -->
+            <p>Imagine stepping into a world where every decision shapes your destiny, and every twist of fate sends shivers down your spine. Welcome to VernoAceStudios, where gaming transcends mere entertainment, becoming an unforgettable journey that resonates long after the final screen fades. We are committed to redefining the gaming landscape by crafting immersive experiences that blend chilling horror narratives with exhilarating flight simulations, inviting players to explore the profound emotional depths of our stories while embracing the thrill of soaring through breathtaking skies.</p>
+            <p>At VernoAceStudios, our passion lies in crafting unique and captivating gaming experiences that resonate with players on multiple levels. We believe that gaming is not just a pastime; it's a journey into new worlds, rich stories, and engaging interactions. Our team is dedicated to exploring the vast potential of gaming by blending innovative ideas with timeless gameplay mechanics. We specialize in a diverse array of genres, focusing on two distinct yet interconnected realms: chilling horror games and thrilling flight simulators.</p>
+            <p>Our horror titles are meticulously designed to keep players on the edge of their seats, immersing them in spine-tingling narratives filled with unexpected twists and brutally impactful endings. Each story we create delves into deep themes and complex emotions, inviting players to engage with the narrative in profound ways. We want our players not only to experience fear but to ponder the underlying themes that resonate long after the game is over.</p>
+            <p>In contrast, our flight simulators offer exhilarating gameplay that perfectly balances realism with exhilarating action. Players can take to the skies in a variety of meticulously modeled aircraft, exploring breathtaking landscapes and diverse environments. Whether racing against time in a thrilling challenge or engaging in high-stakes aerial combat, our flight simulators are designed to deliver experiences that are both immersive and exhilarating. We aim to provide players with a sense of freedom and adventure as they navigate through stunningly rendered worlds.</p>
+            <p>Innovation and creativity are the cornerstones of every project we undertake. Our commitment to pushing the boundaries of what games can offer drives us to constantly refine our ideas and explore new possibilities. We strive to deliver experiences that are not just entertaining but also thought-provoking, allowing players to connect with our games on a deeper level. Join us on our journey as we strive to create unforgettable gaming experiences that challenge, entertain, and inspire.</p>
+            <p>At VernoAceStudios, we believe that every game should be a memorable adventure, and we can’t wait to share our vision with you! Together, let’s embark on a new era of gaming where every title leaves an indelible mark on the hearts and minds of players.</p>
+        </div>
+
+        <!-- Our Vision Section -->
+        <div id="our-vision" class="section">
+            <h2>Our Vision</h2>
+            <p>At VernoAceStudios, we are committed to crafting groundbreaking game concepts that push the boundaries of traditional gameplay. We strive to create experiences that not only entertain but also challenge players’ perceptions and expectations of gaming. Our diverse portfolio includes a range of projects that reflect our dedication to innovation and storytelling:</p>
+            <ul>
+                <li><strong>Horror Games:</strong> Prepare for an intense journey into fear with our horror game, inspired by our upcoming film about a psychotic satanic vampire girl. Set in the dark and gritty atmosphere of Los Angeles in 2013, players will navigate a city where the supernatural lurks behind every corner. The game immerses players in a narrative filled with suspense, unexpected twists, and psychological horror. As they unravel the story, players will encounter a terrifying antagonist—a vampire girl who manipulates reality and plays on their deepest fears. Players must strategize to survive her nightmarish world, using their wits and instincts to escape her grasp. The chilling narrative invites players to delve deep into themes of fear, isolation, and the struggle for survival in a city plagued by darkness.</li>
+                <li><strong>Medieval Strategy Games:</strong> Step into a world of conquest and power with our grand strategy game that combines the best elements of Medieval II: Total War and World War II. Players will have the opportunity to lead their chosen nation, commanding armies and shaping history through strategic decisions. The game features overseas colonies, allowing players to expand their empires beyond Europe and engage in trade with distant lands. Form alliances with other nations, negotiate treaties, and compete for resources that can turn the tide of war.
+
+Players will be able to build and manage their kingdoms, developing economies and infrastructures while maintaining the delicate balance of power with rival factions. Engage in large-scale battles where tactical positioning and troop composition can determine victory or defeat. As players navigate through complex political landscapes, they will face the consequences of their choices, whether through betrayal, diplomacy, or all-out war. This expansive and immersive gameplay experience ensures that each campaign is unique and filled with endless possibilities.</li>
+                <li><strong>Flight Simulator:</strong> Soar through the skies in our high-fidelity flight simulators, where players can explore big cities in a variety of aircraft or even take flight as Superman. Experience the exhilaration of piloting through iconic urban landscapes, from the skyscrapers of New York to the sun-soaked beaches of Los Angeles. Our flight simulator also includes an adrenaline-fueled fighter jet mode, allowing players to engage in intense multiplayer or single-player battles. Compete against friends or AI opponents in high-stakes dogfights, shooting down enemy aircraft in thrilling scenarios set in the Middle East or WWII Europe. With stunning graphics and realistic flight mechanics, players will feel the rush of flying as they navigate through breathtaking environments.</li>
+                <li><strong>Zombies Mode:</strong> Inspired by Call of Duty, Gear up for heart-pounding action in our Zombies Mode, where players can choose from various terrifying settings, including Nazi zombies, Japan zombies, or Israel zombies. Each period offers unique challenges and gameplay mechanics, requiring players to adapt their strategies based on the characteristics of the undead they face. Team up with friends in co-op survival scenarios, facing relentless waves of zombies while customizing weapons and upgrades to enhance their combat effectiveness. Discover hidden lore and secrets as players fight for survival in each era, creating a rich and immersive experience that deepens with each playthrough.</li>
+                <li><strong>Horror Movie Idea:</strong> In a city where shadows loom and fear takes form, a psychotic vampire girl emerges, blurring the line between reality and nightmare. Our exploration of horror transcends traditional boundaries through a gripping film and game concept set in 2013 Los Angeles, where chilling narratives draw audiences into the dark corners of the human psyche.
+
+The film follows a young woman entangled with a sinister vampire, whose psychotic nature manipulates and feeds off those around her. As the story unfolds, viewers witness her descent into madness, exploring themes of isolation, mental instability, and the corrupting power of fear. This unsettling atmosphere mirrors the game experience, where players navigate haunted landscapes, uncovering hidden truths and confronting their deepest fears.
+
+Both the film and game share a gritty aesthetic and haunting soundtrack, immersing audiences in the eerie ambiance of Los Angeles. By intertwining their storylines, we aim to evoke visceral emotions that resonate long after the experience ends.
+
+Ultimately, our horror movie and game serve as complementary journeys, inviting audiences to explore the nightmarish depths of the vampire girl’s psyche while reflecting on fear, power, and humanity. Through this dual approach, we seek to create a lasting impact that engages fans in multiple dimensions.</li>
+                <li><strong>Conclusion:</strong> At VernoAceStudios, we are passionate about creating memorable gaming experiences that challenge, entertain, and inspire. Join us on this exciting journey as we bring our innovative concepts to life, inviting players to embark on adventures that leave a lasting impact. Together, let’s shape the future of gaming!</li>
+
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>We would love to hear from you! Reach out to us through our official email: <a href="mailto:info@vernoacestudios.com">info@vernoacestudios.com</a></p>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="signup-form" id="signupForm">
+            <h3>Sign Up</h3>
+            <div class="form-group">
+                <label for="signupUsername">Username</label>
+                <input type="text" id="signupUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" required>
+            </div>
+            <button id="submitSignup">Submit</button>
+            <div class="error-message" id="signupError"></div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-form" id="loginForm">
+            <h3>Login</h3>
+            <div class="form-group">
+                <label for="loginUsername">Username</label>
+                <input type="text" id="loginUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            <button id="submitLogin">Submit</button>
+            <div class="error-message" id="loginError"></div>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('signupButton').onclick = function() {
+            document.getElementById('signupForm').classList.add('active');
+            document.getElementById('loginForm').classList.remove('active');
+            document.getElementById('userDisplay').textContent = ''; // Clear username display
+        };
+
+        document.getElementById('loginButton').onclick = function() {
+            document.getElementById('loginForm').classList.add('active');
+            document.getElementById('signupForm').classList.remove('active');
+            document.getElementById('userDisplay').textContent = ''; // Clear username display
+        };
+
+        // Handle signup submission
+        document.getElementById('submitSignup').onclick = function() {
+            const username = document.getElementById('signupUsername').value;
+            const password = document.getElementById('signupPassword').value;
+
+            // Add logic to handle signup process here
+            console.log(`Signing up with Username: ${username}, Password: ${password}`);
+            document.getElementById('signupError').textContent = ''; // Clear previous error
+            if (username && password) {
+                // Simulate successful signup
+                document.getElementById('userDisplay').textContent = username; // Update username display
+                document.getElementById('signupForm').classList.remove('active'); // Hide signup form
+            } else {
+                document.getElementById('signupError').textContent = 'Please enter both username and password.';
+            }
+        };
+
+        // Handle login submission
+        document.getElementById('submitLogin').onclick = function() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Add logic to handle login process here
+            console.log(`Logging in with Username: ${username}, Password: ${password}`);
+            document.getElementById('loginError').textContent = ''; // Clear previous error
+            if (username && password) {
+                // Simulate successful login
+                document.getElementById('userDisplay').textContent = username; // Update username display
+                document.getElementById('loginForm').classList.remove('active'); // Hide login form
+            } else {
+                document.getElementById('loginError').textContent = 'Please enter both username and password.';
+            }
+        };
+    </script>
+</body>
+</html>
